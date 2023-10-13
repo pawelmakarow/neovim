@@ -2,6 +2,8 @@
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
 
+vim.g.mapleader = " "
+
 local remap = require("pawelmakarow.me.util").remap
 local bufopts = { silent = true, noremap = true }
 

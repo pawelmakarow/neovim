@@ -8,13 +8,15 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
-    local keymap = vim.keymap
+
+    local remap = require("pawelmakarow.me.util").remap
+    local bufopts = { silent = true, noremap = true }
 
     local on_attach = function(client, bufnr)
-      keymap.set("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-      keymap.set("n", "gd", vim.lsp.buf.definition, "Go to definition")
-      keymap.set("n", "gi", vim.lsp.buf.implementation, "Go to implementation")
-      keymap.set("n", "K",  vim.lsp.buf.hover, "Hover text")
+      remap("n", "gD", "vim.lsp.buf.declaration", bufopts, "Goto Declaration")
+      remap("n", "gd", "vim.lsp.buf.definition", bufopts, "Go to definition")
+      remap("n", "gi", "vim.lsp.buf.implementation", bufopts, "Go to implementation")
+      remap("n", "K",  "vim.lsp.buf.hover", bufopts, "Hover text")
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
